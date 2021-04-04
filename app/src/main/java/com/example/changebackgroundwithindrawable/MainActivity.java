@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(ACCOUNT_PROFILE_PHOTO, MODE_PRIVATE);
         if(sharedPreferences.contains(ACCOUNT_PROFILE_PHOTO)) {
             int resourceID = sharedPreferences.getInt(ACCOUNT_PROFILE_PHOTO,R.drawable.ic_launcher_foreground);
-            editor.putInt(ACCOUNT_PROFILE_PHOTO, resourceID);
-            editor.apply();
+            imageButton.setImageResource(resourceID);
         }else{
             imageButton.setImageResource(R.drawable.ic_launcher_foreground);
             editor.putInt(ACCOUNT_PROFILE_PHOTO, R.drawable.ic_launcher_foreground);
