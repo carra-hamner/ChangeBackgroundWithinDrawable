@@ -31,10 +31,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e};
         imageButton = findViewById(R.id.imageButton);
-        imageButton.setImageResource(R.drawable.ic_launcher_foreground);
+       
         sharedPreferences = getSharedPreferences(ACCOUNT_PROFILE_PHOTO, MODE_PRIVATE);
         if(sharedPreferences.contains(ACCOUNT_PROFILE_PHOTO)) {
-            sharedPreferences.getInt(ACCOUNT_PROFILE_PHOTO,R.drawable.ic_launcher_foreground);
+            int resourceID = sharedPreferences.getInt(ACCOUNT_PROFILE_PHOTO,R.drawable.ic_launcher_foreground);
+            editor.putInt(ACCOUNT_PROFILE_PHOTO, resourceID);
+            editor.apply();
+        }else{
+            imageButton.setImageResource(R.drawable.ic_launcher_foreground);
+            editor.putInt(ACCOUNT_PROFILE_PHOTO, R.drawable.ic_launcher_foreground);
+            editor.apply();
         }
 
 
